@@ -1,5 +1,7 @@
 # Minimax: Adversarische Suche am Beispiel Mini-Vier-Gewinnt
 
+**[→ Demo live ausprobieren](https://sebastianhanisch-minimax-demo.streamlit.app/)**
+
 Wurzel der **Adversarische-Suche-Linie** (Spiel-KI/Game-Engines), einer Anknüpfung an die
 Turnierplanung-Linie (Schach) aus einem anderen Blickwinkel: nicht *wer gegen wen*, sondern *wie
 entscheidet eine Maschine ihren nächsten Zug*. Vehikel: Mini-Vier-Gewinnt auf kleinen, vollständig
