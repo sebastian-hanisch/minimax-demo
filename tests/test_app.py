@@ -57,8 +57,8 @@ def test_switching_board_size_resets_moves():
 
 
 def test_terminal_position_hides_move_buttons():
-    # 3x3 kann laut Suche (Sieglaenge 4 > jede Brettdimension) nie gewonnen
-    # werden - drei volle Runden durch alle Spalten fuellen das Brett zum Remis.
+    # 3x3 kann laut Suche (Sieglänge 4 > jede Brettdimension) nie gewonnen
+    # werden - drei volle Runden durch alle Spalten füllen das Brett zum Remis.
     def setup_full(at):
         at.session_state["board_index_select"] = 0
         at.session_state["moves"] = [0, 1, 2, 0, 1, 2, 0, 1, 2]

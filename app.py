@@ -180,7 +180,7 @@ st.markdown(
     """
     - **Kein Pruning.** Die Suche besucht wirklich jede erreichbare Stellung – das
       ist hier bewusst der Punkt (Kontrast zum Kind-Stück Alpha-Beta), macht die
-      Demo aber auf größere Bretter (ab 4×4) unbrauchbar langsam.
+      Demo aber auf größeren Brettern (ab 4×4) unbrauchbar langsam.
     - **Keine Zeitkontrolle.** Echte Turnierpartien haben ein Zeitlimit; diese
       Demo bewertet nur die reine Spielbaumgröße, keine Schachuhr.
     - **Kleines Brett, kleine Aussagekraft.** Auf allen gemessenen Brettgrößen
@@ -195,7 +195,7 @@ with st.expander("📐 Mathematische Formulierung"):
     st.markdown(
         r"""
         Für eine Stellung $s$ mit Spieler $p \in \{\text{Rot}, \text{Gelb}\}$ am Zug
-        und Nachfolgestellungen $s' \in \text{Zuege}(s)$:
+        und Nachfolgestellungen $s' \in \text{Züge}(s)$:
 
         $$
         \text{minimax}(s) =

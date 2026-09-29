@@ -13,7 +13,7 @@ from mm_minimax import NodeCounter, solve_position
 
 
 def test_1x1_board_is_a_trivial_draw():
-    # Einziges Feld, Sieglaenge 4 unerreichbar -> muss Remis sein.
+    # Einziges Feld, Sieglänge 4 unerreichbar -> muss Remis sein.
     board = empty_board(1, 1)
     result = solve_position(board, PLAYER_ONE)
     assert result.value == 0
@@ -22,7 +22,7 @@ def test_1x1_board_is_a_trivial_draw():
 
 def test_1x4_board_can_never_be_won_by_either_side():
     # 4 Zellen, 2 Spieler im Wechsel -> jeder bekommt genau 2, ein Sieg (alle 4
-    # gleiche Farbe) ist strukturell unmoeglich, egal welche Spalte gewaehlt wird.
+    # gleiche Farbe) ist strukturell unmöglich, egal welche Spalte gewählt wird.
     board = empty_board(1, 4)
     result = solve_position(board, PLAYER_ONE)
     assert result.value == 0
@@ -31,9 +31,9 @@ def test_1x4_board_can_never_be_won_by_either_side():
 
 
 def test_one_move_from_a_forced_win_is_detected():
-    # Nach 6 real alternierenden Zuegen (P1,P2,P1,P2,P1,P2) steht Rot mit drei
+    # Nach 6 real alternierenden Zügen (P1,P2,P1,P2,P1,P2) steht Rot mit drei
     # Steinen senkrecht in Spalte 0 und ist wieder am Zug -> muss sofort
-    # gewinnen koennen (Spaltenwert 1 in der einzig sinnvollen Spalte).
+    # gewinnen können (Spaltenwert 1 in der einzig sinnvollen Spalte).
     board = empty_board(4, 2)
     for col, player in [(0, PLAYER_ONE), (1, PLAYER_TWO)] * 3:
         apply_move(board, col, player)

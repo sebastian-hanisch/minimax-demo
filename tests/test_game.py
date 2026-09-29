@@ -138,7 +138,7 @@ def test_replay_ignores_moves_after_terminal_state():
 
 
 def test_replay_full_board_without_winner_is_draw():
-    # 1x1-Brett: einziger Zug fuellt das Brett sofort, ohne Sieg moeglich.
+    # 1x1-Brett: einziger Zug füllt das Brett sofort, ohne Sieg möglich.
     state = replay(1, 1, [0])
     assert state.is_terminal
     assert state.winner is None

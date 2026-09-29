@@ -14,7 +14,7 @@ from mm_minimax import solve_position
 
 def test_format_de_number_does_not_touch_surrounding_text():
     # Echter Fund beim Bau: ein blankes `.replace(",", ".")` auf einem ganzen
-    # Satz zerstoerte auch echte Satzkommas ("3x4, mehr Spalten" -> "3x4. mehr
+    # Satz zerstörte auch echte Satzkommas ("3x4, mehr Spalten" -> "3x4. mehr
     # Spalten"). format_de_number formatiert NUR die Zahl.
     sentence = f"Das breitere Brett (3x4, mehr Spalten) hat {format_de_number(700_777)} Knoten."
     assert sentence == "Das breitere Brett (3x4, mehr Spalten) hat 700.777 Knoten."

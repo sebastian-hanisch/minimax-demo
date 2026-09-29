@@ -1,8 +1,8 @@
-"""Regressionstest: aufeinanderfolgende multi_cell-Aufrufe duerfen nicht crashen.
+"""Regressionstest: aufeinanderfolgende multi_cell-Aufrufe dürfen nicht crashen.
 
-Echter Fund beim Bau: `multi_cell(w=0, ...)` laesst den Cursor per fpdf2-Default
+Echter Fund beim Bau: `multi_cell(w=0, ...)` lässt den Cursor per fpdf2-Default
 am RECHTEN Rand stehen (anders als `cell`) - ohne `new_x=LMARGIN` rechnet der
-naechste `multi_cell`-Aufruf mit 0 verbleibender Breite und wirft
+nächste `multi_cell`-Aufruf mit 0 verbleibender Breite und wirft
 `FPDFException("Not enough horizontal space to render a single character")`.
 """
 
