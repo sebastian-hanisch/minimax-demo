@@ -5,7 +5,7 @@
 Wurzel der **Adversarische-Suche-Linie** (Spiel-KI/Game-Engines), einer Anknüpfung an die
 Turnierplanung-Linie (Schach) aus einem anderen Blickwinkel: nicht *wer gegen wen*, sondern *wie
 entscheidet eine Maschine ihren nächsten Zug*. Vehikel: Mini-Vier-Gewinnt auf kleinen, vollständig
-durchsuchbaren Brettern. Kind-Stücke (geplant): Alpha-Beta-Pruning, Transpositionstabellen,
+durchsuchbaren Brettern. Kind-Stücke (alle gebaut): Alpha-Beta-Pruning, Transpositionstabellen,
 Bewertungsfunktionen, Endspiel-Datenbanken, Self-Play mit gelernter Bewertung.
 
 ## Warum dieses Problem
@@ -41,7 +41,7 @@ Suche (`mm_minimax.solve_position`, siehe `tests/test_claims.py`):
 | 4×4 | 83.078.201 | 334 s (~5,6 min) | nein (nur Referenzpunkt) |
 
 - **Explosion:** von 3×3 auf 4×4 (nur 7 zusätzliche Felder) wächst die Knotenzahl um das rund
-  23.282-fache.
+  23.284-fache.
 - **Verzweigungsfaktor schlägt Tiefe:** 4×3 und 3×4 haben beide 12 Felder, aber 3×4 (mehr Spalten =
   höherer Verzweigungsfaktor) hat rund das 10-fache an Suchknoten gegenüber 4×3 (mehr Zeilen = mehr
   Tiefe) – bei gleicher Feldzahl dominiert der Verzweigungsfaktor das b^d-Wachstum stärker als die
@@ -96,3 +96,7 @@ pytest tests/ -v
 ```
 
 Gebaut mit Streamlit, Plotly und fpdf2.
+
+---
+
+Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). Mehr zur Reihe: [Adversarische Suche: Minimax bis Selbstspiel](https://sebastianhanisch.net/konzepte-adversarische-suche.html).

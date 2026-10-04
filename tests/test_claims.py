@@ -35,7 +35,7 @@ def test_readme_node_counts_for_live_boards(rows, cols, expected_nodes):
 
 
 def test_readme_explosion_growth_factor():
-    assert explosion_growth_factor() == pytest.approx(23_282, rel=1e-3)
+    assert explosion_growth_factor() == pytest.approx(23_284, rel=1e-3)
 
 
 def test_readme_branching_vs_depth_factor():

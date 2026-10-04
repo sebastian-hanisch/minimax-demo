@@ -147,7 +147,7 @@ st.markdown(
     """
     Jedes zusätzliche freie Feld vervielfacht die Zahl der möglichen Fortsetzungen.
     Die folgenden Werte sind **gemessen** (naive Minimax-Suche ohne Pruning, ab dem
-    leeren Brett) – die beiden größten Bretter sind zu langsam für die interaktive
+    leeren Brett) – das größte Brett ist zu langsam für die interaktive
     Nutzung oben und deshalb nur als Referenzpunkt gezeigt (grau).
     """
 )
@@ -218,6 +218,6 @@ with st.expander("📐 Mathematische Formulierung"):
 st.markdown("---")
 st.caption(
     "Diese Demo ist Teil des Portfolios von [Sebastian Hanisch](https://sebastianhanisch.net) – "
-    "Operations Research und Machine Learning. Interesse an einer maßgeschneiderten Lösung für "
-    "Ihr Unternehmen? [Kontakt aufnehmen](https://sebastianhanisch.net/kontakt.html)"
+    "Operations Research und Machine Learning ([Über mich](https://sebastianhanisch.net/ueber-mich.html)). "
+    "Mehr zur Reihe: [Adversarische Suche: Minimax bis Selbstspiel](https://sebastianhanisch.net/konzepte-adversarische-suche.html)."
 )
