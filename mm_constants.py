@@ -11,7 +11,7 @@ EMPTY_COLOUR = "#e5e5e5"
 
 # Live wählbare Brettgrößen: ausschließlich vorab gemessene, unter ~2,5 s liegende
 # Größen (siehe tools/PRESET_SWEEP.md) - bewusst eine Auswahl statt zweier freier
-# Regler, damit die 4x4-Falle (170,95 s) strukturell nicht wählbar ist.
+# Regler, damit die 4x4-Falle (334 s) strukturell nicht wählbar ist.
 BOARD_OPTIONS = [
     {"rows": 3, "cols": 3, "label": "3 × 3"},
     {"rows": 4, "cols": 3, "label": "4 Zeilen × 3 Spalten"},
