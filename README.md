@@ -61,7 +61,7 @@ Suche (`mm_minimax.solve_position`, siehe `tests/test_claims.py`):
 
 ## Tests
 
-29 Tests (`pytest tests/ -v`): Brettmechanik, Suchalgorithmus (Handverifikation + Alpha-Beta-Gegenprobe),
+46 Tests (`pytest tests/ -v`): Brettmechanik, Suchalgorithmus (Handverifikation + Alpha-Beta-Gegenprobe),
 PDF-Export, Streamlit-Rauchtests (AppTest: jede Brettgröße, Spaltenklick, Permalink-Rundlauf,
 Brettgrößenwechsel setzt die Zugfolge zurück). Zwei echte Bugs beim Bau gefunden und gefixt:
 `multi_cell(w=0, ...)` lässt den Cursor am rechten Rand stehen (nicht wie `cell` am linken) – ein
