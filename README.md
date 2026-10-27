@@ -2,10 +2,10 @@
 
 **[→ Demo live ausprobieren](https://sebastianhanisch-minimax-demo.streamlit.app/)**
 
-Wurzel der **Adversarische-Suche-Linie** (Spiel-KI/Game-Engines), einer Anknüpfung an die
-Turnierplanung-Linie (Schach) aus einem anderen Blickwinkel: nicht *wer gegen wen*, sondern *wie
+Erste Demo zur **adversarischen Suche** (Spiel-KI/Game-Engines), eine Anknüpfung an die
+Demos zur Turnierplanung (Schach) aus einem anderen Blickwinkel: nicht *wer gegen wen*, sondern *wie
 entscheidet eine Maschine ihren nächsten Zug*. Vehikel: Mini-Vier-Gewinnt auf kleinen, vollständig
-durchsuchbaren Brettern. Kind-Stücke (alle gebaut): Alpha-Beta-Pruning, Transpositionstabellen,
+durchsuchbaren Brettern. Weitere Demos dazu (alle gebaut): Alpha-Beta-Pruning, Transpositionstabellen,
 Bewertungsfunktionen, Endspiel-Datenbanken, Self-Play mit gelernter Bewertung.
 
 ## Warum dieses Problem
@@ -14,7 +14,7 @@ Bei einem deterministischen Nullsummenspiel mit zwei abwechselnd ziehenden Gegne
 optimale Zug beweisen, nicht nur schätzen: **Minimax** durchsucht den vollständigen Spielbaum, eine
 Seite maximiert das Ergebnis, die andere minimiert es. Der Preis: die Baumgröße explodiert mit der
 Brettgröße. Diese Demo zeigt beides – den Beweis UND die Explosion – bewusst **ohne** jedes Pruning
-(das ist Gegenstand des Kind-Stücks Alpha-Beta).
+(das ist Gegenstand der Alpha-Beta-Demo).
 
 ## Modell
 
@@ -40,15 +40,23 @@ Suche (`mm_minimax.solve_position`, siehe `tests/test_claims.py`):
 | 3×4 | 700.777 | 2,39 s | ja |
 | 4×4 | 83.078.201 | 334 s (~5,6 min) | nein (nur Referenzpunkt) |
 
+Die Knotenzahlen der live wählbaren Bretter rechnet `tests/test_claims.py` nach; der 4×4-Wert ist
+vorab gemessen und dort nur als Konstante hinterlegt, nicht nachgerechnet. Die Zeiten hängen vom
+Rechner ab.
+
 - **Explosion:** von 3×3 auf 4×4 (nur 7 zusätzliche Felder) wächst die Knotenzahl um das rund
   23.284-fache.
 - **Verzweigungsfaktor schlägt Tiefe:** 4×3 und 3×4 haben beide 12 Felder, aber 3×4 (mehr Spalten =
   höherer Verzweigungsfaktor) hat rund das 10-fache an Suchknoten gegenüber 4×3 (mehr Zeilen = mehr
-  Tiefe) – bei gleicher Feldzahl dominiert der Verzweigungsfaktor das b^d-Wachstum stärker als die
-  Tiefe.
-- **Alle gemessenen Bretter (3×3 bis 4×4) enden remis** bei perfektem Spiel ab der Startstellung – der
-  bekannte Vorteil des Startspielers bei Standard-Vier-Gewinnt (7×6, bewiesen von Victor Allis 1988)
-  zeigt sich auf diesen kleinen Brettern noch nicht.
+  Tiefe). Der Verzweigungsfaktor wirkt in diesem Vergleich stärker als die Tiefe; ob das allein
+  daran liegt, ist offen, denn auf 4×3 sind nur senkrechte, auf 3×4 nur waagerechte Viererreihen
+  möglich.
+- **Die live gerechneten Bretter (3×3, 4×3, 3×4) enden remis** bei perfektem Spiel ab der
+  Startstellung (getestet). Das ist zum Teil schon durch die Geometrie vorgegeben: Bei Sieglänge 4
+  passt auf 3×3 keine Viererreihe, auf 4×3 nur eine senkrechte, auf 3×4 nur eine waagerechte. Für
+  4×4 ist das Ergebnis in der Demo nicht nachgerechnet. Der bekannte Vorteil des Startspielers bei
+  Standard-Vier-Gewinnt (7×6, bewiesen von Victor Allis 1988) zeigt sich auf diesen kleinen Brettern
+  nicht.
 
 ## Ehrliche Grenzen
 
@@ -84,7 +92,7 @@ so jeden Spaltenklick sofort wieder rückgängig gemacht.
 
 ## Bewusst nicht umgesetzt
 
-- Bretter ab 4×4 live berechenbar zu machen (Gegenstand des Kind-Stücks Alpha-Beta).
+- Bretter ab 4×4 live berechenbar zu machen (Gegenstand der Alpha-Beta-Demo).
 - Eröffnungsbücher, Zeitkontrolle, Turniermodus.
 
 ## Lokal ausführen

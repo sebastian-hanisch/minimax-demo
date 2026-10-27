@@ -10,7 +10,7 @@ PLAYER_COLOURS = {PLAYER_ONE: "#d62728", PLAYER_TWO: "#f2c744"}
 EMPTY_COLOUR = "#e5e5e5"
 
 # Live wählbare Brettgrößen: ausschließlich vorab gemessene, unter ~2,5 s liegende
-# Größen (siehe tools/PRESET_SWEEP.md) - bewusst eine Auswahl statt zweier freier
+# Größen (Messreihe liegt nicht im Repo; Knotenzahlen: tests/test_claims.py) - bewusst eine Auswahl statt zweier freier
 # Regler, damit die 4x4-Falle (334 s) strukturell nicht wählbar ist.
 BOARD_OPTIONS = [
     {"rows": 3, "cols": 3, "label": "3 × 3"},
@@ -21,7 +21,7 @@ DEFAULT_BOARD_INDEX = 1  # 4x3
 
 # Vorab gemessene, NICHT live wählbare Referenzpunkte für die Explosions-Kurve -
 # gemessen mit der TATSÄCHLICH ausgelieferten Suche (mm_minimax.solve_position),
-# nicht mit einem Wegwerf-Skript (tools/PRESET_SWEEP.md dokumentiert den Lauf).
+# nicht mit einem Wegwerf-Skript. Der 4x4-Wert ist nur als Konstante hinterlegt, nicht per Test nachgerechnet.
 # 4x4 dauert bereits 334 s - eine weitere Stufe (z. B. 3x5) wurde deshalb bewusst
 # NICHT nachgemessen, um keine Zahl zu zeigen, die nicht am ausgelieferten Code
 # gemessen wurde.

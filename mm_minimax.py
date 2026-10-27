@@ -1,5 +1,5 @@
-"""Erschöpfende Minimax-Suche (Wurzel-Stück: bewusst OHNE Alpha-Beta-Pruning -
-das ist der Gegenstand des Kind-Stücks `alpha-beta-demo`).
+"""Erschöpfende Minimax-Suche (bewusst OHNE Alpha-Beta-Pruning -
+das ist der Gegenstand der Demo `alpha-beta-demo`).
 
 Der Spielwert ist immer aus Sicht von PLAYER_ONE kodiert: +1 = Sieg Rot,
 -1 = Sieg Gelb, 0 = Remis bei perfektem Spiel beider Seiten.

@@ -17,7 +17,7 @@ PRESETS = {
 }
 PRESET_HELP = {
     "Leeres 3×3": "Das kleinste Brett - Suche in Sekundenbruchteilen.",
-    "Leeres 4×3 (Standard)": "Ausgangsstellung des Standard-Vehikels dieser Linie.",
+    "Leeres 4×3 (Standard)": "Ausgangsstellung des Standard-Vehikels dieser Demo.",
     "3×4 nach mittigem Eröffnungszug": "Zeigt, wie sich der Suchbaum nach einem Zug verkleinert.",
 }
 

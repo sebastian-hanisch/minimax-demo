@@ -1,6 +1,6 @@
 """Minimax: erschöpfende Baumsuche für ein deterministisches Nullsummenspiel.
 
-Wurzel der Adversarische-Suche-Linie. Vehikel: Mini-Vier-Gewinnt auf kleinen,
+Erste Demo zur adversarischen Suche. Vehikel: Mini-Vier-Gewinnt auf kleinen,
 vollständig durchsuchbaren Brettern.
 """
 
@@ -40,10 +40,23 @@ st.markdown(
     Spielbaum: eine Seite maximiert das Ergebnis, die andere minimiert es. Auf den
     kleinen Brettern dieser Demo beweist die Suche für jede Stellung exakt, ob
     Sieg, Remis oder Niederlage bei perfektem Spiel herauskommt – ganz **ohne**
-    Pruning (das folgt erst im Kind-Stück **Alpha-Beta**). Am Ende der Seite:
+    Pruning (das zeigt erst die eigene Demo zu **Alpha-Beta**). Am Ende der Seite:
     die **📐 Mathematische Formulierung**.
     """
 )
+
+# erklaerseite:einfach:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/minimax-erklaert.json, nicht von Hand ändern)
+with st.expander("💬 In einfachen Worten"):
+    st.markdown(
+        """
+Stellen Sie sich Vier gewinnt auf einem kleinen Brett vor. Vor jedem Zug überlegen Sie, was der Gegner antworten wird, und rechnen damit, dass er den für ihn besten Zug findet. **Minimax** wählt deshalb den Zug, dessen schlechtester Ausgang am besten ist.
+
+Die Suche prüft dafür alle Fortsetzungen bis zum Spielende und liefert für die Stellung ein bewiesenes Urteil: Sieg, Remis oder Niederlage, wenn beide Seiten fehlerfrei spielen. Der Preis ist die Rechenarbeit. Mit jedem freien Feld mehr vervielfacht sich die Zahl der Fortsetzungen. Darum sind in der Demo nur die kleinen Bretter live wählbar; das größte Brett erscheint nur als vorab gemessener Referenzpunkt.
+
+[Ausführlich und verständlich erklärt, mit Fachteil](https://sebastianhanisch.net/minimax-erklaert.html)
+        """
+    )
+# erklaerseite:einfach:end
 
 st.caption("🎯 Schnellstart – eine Beispielstellung laden")
 preset_cols = st.columns(len(PRESETS))
@@ -170,8 +183,9 @@ st.markdown(
 b_factor = branching_vs_depth_factor()
 st.success(
     f"Bei gleicher Feldzahl hat das breitere Brett (3×4, mehr Spalten) **{_de(b_factor, 1)}-mal** "
-    f"so viele Suchknoten wie das tiefere Brett (4×3, mehr Zeilen) – der Verzweigungsfaktor "
-    f"dominiert das b^d-Wachstum stärker als die Tiefe."
+    f"so viele Suchknoten wie das tiefere Brett (4×3, mehr Zeilen). Der Verzweigungsfaktor "
+    f"wirkt in diesem Vergleich stärker als die Tiefe; ob das allein daran liegt, ist offen, "
+    f"denn auf 4×3 sind nur senkrechte, auf 3×4 nur waagerechte Viererreihen möglich."
 )
 
 st.markdown("---")
@@ -179,19 +193,39 @@ st.subheader("🚧 Wo die Annahmen enden")
 st.markdown(
     """
     - **Kein Pruning.** Die Suche besucht wirklich jede erreichbare Stellung – das
-      ist hier bewusst der Punkt (Kontrast zum Kind-Stück Alpha-Beta), macht die
+      ist hier bewusst der Punkt (Kontrast zur eigenen Demo zu Alpha-Beta), macht die
       Demo aber auf größeren Brettern (ab 4×4) unbrauchbar langsam.
     - **Keine Zeitkontrolle.** Echte Turnierpartien haben ein Zeitlimit; diese
       Demo bewertet nur die reine Spielbaumgröße, keine Schachuhr.
-    - **Kleines Brett, kleine Aussagekraft.** Auf allen gemessenen Brettgrößen
-      (3×3 bis 4×4) endet die Ausgangsstellung remis bei perfektem Spiel – der
-      bekannte Vorteil des Startspielers
-      bei Standard-Vier-Gewinnt (7×6, bewiesen von Victor Allis 1988) zeigt sich
-      auf diesen kleinen Brettern noch nicht.
+    - **Kleines Brett, kleine Aussagekraft.** Auf den live gerechneten Brettern
+      (3×3, 4×3, 3×4) endet die Ausgangsstellung remis bei perfektem Spiel. Das ist
+      zum Teil schon durch die Geometrie vorgegeben: Bei Sieglänge 4 passt auf 3×3
+      keine Viererreihe, auf 4×3 nur eine senkrechte, auf 3×4 nur eine waagerechte.
+      Der bekannte Vorteil des Startspielers bei Standard-Vier-Gewinnt (7×6,
+      bewiesen von Victor Allis 1988) zeigt sich auf diesen kleinen Brettern nicht.
+      Für 4×4 ist das Ergebnis in der Demo nicht nachgerechnet.
     """
 )
 
 with st.expander("📐 Mathematische Formulierung"):
+    # erklaerseite:lesehilfe:start (erzeugt von tools/set_demo_explainer.py (Website-Repo) aus tools/content/explainers/minimax-erklaert.json, nicht von Hand ändern)
+    st.markdown(
+        r"""
+**Lesehilfe.** Gegeben ist eine Stellung $s$ in einem Spiel zu zweit, in dem Rot und Gelb abwechselnd ziehen. Gesucht ist ihr Spielwert, also das Ergebnis, das sich bei fehlerfreiem Spiel beider Seiten ergibt.
+
+| Symbol | Bedeutung |
+|---|---|
+| $s$, $s'$ | Stellung bzw. eine ihrer Nachfolgestellungen nach einem Zug |
+| $\text{Züge}(s)$ | Menge der Nachfolgestellungen von $s$ |
+| $p$ | Spieler, der in $s$ am Zug ist (Rot oder Gelb) |
+| $\text{minimax}(s)$ | Spielwert der Stellung $s$: $+1$ Sieg Rot, $-1$ Sieg Gelb, $0$ Remis |
+| $\max$, $\min$ | größter bzw. kleinster Wert über alle Nachfolgestellungen: Rot maximiert, Gelb minimiert |
+| $b$, $d$ | Verzweigungsfaktor (Zahl der Spalten, also der möglichen Züge) bzw. Tiefe (Zahl der freien Felder) |
+
+[Schritt für Schritt erklärt, mit Herleitung und Literatur](https://sebastianhanisch.net/minimax-erklaert.html#fachleute)
+        """
+    )
+    # erklaerseite:lesehilfe:end
     st.markdown(
         r"""
         Für eine Stellung $s$ mit Spieler $p \in \{\text{Rot}, \text{Gelb}\}$ am Zug
